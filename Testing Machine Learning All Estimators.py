@@ -46,12 +46,8 @@ df_test = pd.read_csv("test.csv")
 # [^2]: Gregory Clark, *[Are there Ruling Classes? Surnames and Social Mobility in England, 1800-2011](https://pdfs.semanticscholar.org/530c/b4db0520099a2086cd0ec44261edee15fb5f.pdf)*
 # 
 
-# In[ ]:
-
-
-## 欠損値の補完
-Titanicデータセットは欠損値を含むので、まずその処理を決めます。
-
+# ## 欠損値の補完
+# Titanicデータセットは欠損値を含むので、まずその処置を決定することにします。
 
 # In[5]:
 
@@ -132,8 +128,8 @@ train_test_dummies = pd.DataFrame(MICE(verbose=False).complete(train_test_dummie
 train_test_dummies.columns = train_cols
 
 
-# もう一つの代入法として、欠損データを補完するための有力な方法と言われる多重代入法を使用します。  
-# Pythonによる実装では「連鎖方程式による多重代入(MICE)」という手法を使用します。
+# もう一つの補完法として、欠損データを補完するための有力な方法と言われる **多重代入法** を使用します。  
+# Pythonによる実装では「連鎖方程式による多重代入(MICE)」という手法を使用します。  
 # fancyimputeモジュールを使用すると手軽にMICEを使えるので、今回はこのモジュールを使用してみます[^1]。
 # 
 # [^1]: 最新バージョン(0.4.2)のfancyimputeはMICEクラスが削除されているようなので、バージョン0.3.1をインストールしています。
@@ -145,7 +141,7 @@ train_test_dummies.columns = train_cols
 # ## スコア表示のできる全ての学習モデルを検討
 # 
 # Pythonの機械学習モジュールでよく使用されるScikit-learnですが、  
-# あるデータセットに対してscoreメソッドを表示できる全ての機械学習モデルを使用するときall_estimator()を使います。  
+# あるデータセットに対してscoreメソッドを表示できる全ての機械学習モデルを使用するとき **all_estimator()** を使います。  
 # このall_estimators()を使えば、SVMやランダムフォレストや回帰分析などを一斉に適用することで、その学習モデルの比較検討を簡単にすることができます。
 # 
 # このとき学習モデルの正解率は把握するため、train.csvのデータセットを学習用データと検証用データに8:2に分割しています。
@@ -348,18 +344,18 @@ print(data.sort_values(0, ascending=False))
 
 # MICEによる補完をしたデータセットで、 all_estimators()を試してみました。  
 # 有望そうなアルゴリズムの正解率は約84%でかなり良いように見えます。  
-# 実際のKaggleのランキングでいうと、**上位3%に入る好成績だと言えます！**  
+# 実際のKaggleのランキングでいうと、上位3%に入る好成績だと言えます。  
 # 
 # 実のところこのランキングは毎回微妙に異なり、安定して上位1-3位辺りに入るものRidgeClassifierCVとBaggingClassifierでした。 
 # 
-# また欠損値の補完についても、「敬称による補完」よりも「MICE」を使用したほうがせいか
-# そこで次からはRidgeClassifierCVとBaggingClassifierについて検討してみることにします。
+# また欠損値の補完についても、「敬称による補完」よりも「MICE」を使用したほうが正解率は平均すると高かったので、今回はMICEによる補完を使用していきたいと思います。
+# さて次からはRidgeClassifierCVとBaggingClassifierのパラメータについて検討してみることにします。
 # 
 
 # # ハイパーパラメータの最適化
 
-# all_estimators()で使用されたアルゴスリズムは、あくまでデフォルトのパラメータを使用したものです。
-# 実際には人間の手によってパラメータを細かくいじる必要がありますので、
+# all_estimators()で使用されたアルゴスリズムは、あくまでデフォルトのパラメータを使用したものです。  
+# 実際には人間の手によってパラメータを細かくいじる必要がありますので、  
 # 最適なハイパーパラメータを探すため、グリッドサーチを利用してみます。
 # 
 # ## RidgeClassifierCVの最適化
