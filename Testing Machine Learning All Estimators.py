@@ -348,7 +348,7 @@ print(data.sort_values(0, ascending=False))
 
 # MICEによる補完をしたデータセットで、 all_estimators()を試してみました。  
 # 有望そうなアルゴリズムの正解率は約84%でかなり良いように見えます。  
-# 実際のKaggleのランキングでいうと、上位3%に入る好成績だと言えます！  
+# 実際のKaggleのランキングでいうと、**上位3%に入る好成績だと言えます！**  
 # 
 # 実のところこのランキングは毎回微妙に異なり、安定して上位1-3位辺りに入るものRidgeClassifierCVとBaggingClassifierでした。 
 # そこで次からはRidgeClassifierCVとBaggingClassifierについて検討してみることにします。
