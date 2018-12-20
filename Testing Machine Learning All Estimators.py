@@ -43,8 +43,7 @@ df_test = pd.read_csv("test.csv")
 # 
 # 
 # 
-# [^2]: Gregory Clark, *Are there Ruling Classes? Surnames and
-# Social Mobility in England, 1800-2011* https://pdfs.semanticscholar.org/530c/b4db0520099a2086cd0ec44261edee15fb5f.pdf
+# [^2]: Gregory Clark, *[Are there Ruling Classes? Surnames and Social Mobility in England, 1800-2011](https://pdfs.semanticscholar.org/530c/b4db0520099a2086cd0ec44261edee15fb5f.pdf)*
 # 
 # 
 # ## 欠損値の補完
