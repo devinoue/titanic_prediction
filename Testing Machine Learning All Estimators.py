@@ -351,6 +351,8 @@ print(data.sort_values(0, ascending=False))
 # 実際のKaggleのランキングでいうと、**上位3%に入る好成績だと言えます！**  
 # 
 # 実のところこのランキングは毎回微妙に異なり、安定して上位1-3位辺りに入るものRidgeClassifierCVとBaggingClassifierでした。 
+# 
+# また欠損値の補完についても、「敬称による補完」よりも「MICE」を使用したほうがせいか
 # そこで次からはRidgeClassifierCVとBaggingClassifierについて検討してみることにします。
 # 
 
